@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="#e3eb1837"
+    tools:context=".login">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gucci.com"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="50dp"
+        android:fontFamily="cursive"
+        android:layout_marginTop="40dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textColorHint="@color/colorHint"
+            android:id="@+id/txtuser"
+            android:hint="Username" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtpass"
+            android:textColor="#fffdfd"
+            android:textColorHint="@color/colorHint"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:hint="Password" />
+
+        <Button
+            android:id="@+id/btnbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:padding="12dp"
+            android:gravity="center"
+            android:textColor="#fffdfd"
+            android:background="#f9cc1313"
+            android:text="Login"/>
+
+        <TextView
+            android:id="@+id/link_signup"
+            android:textColor="#fffdfd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="No account yet? Create one"
+            android:gravity="center"
+            android:textSize="16dip"/>
+    </LinearLayout>
+
+</LinearLayout>
