@@ -100,8 +100,7 @@ public class homeScreen extends AppCompatActivity {
                 SharedPreferences.Editor editor = myPrefs.edit();
                 editor.clear();
                 editor.apply();
-                Intent intent = new Intent(homeScreen.this,
-                        homeScreen.class);
+                Intent intent = new Intent(homeScreen.this, homeScreen.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
             case R.id.menu1:

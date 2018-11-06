@@ -121,23 +121,33 @@ public class MahasiswaHelper {
     public void endTransaction() {
         database.endTransaction();
     }
-    public void insertTransaction(MahasiswaModel mahasiswaModel){
-        String sql = "INSERT INTO "+TABLE_NAME+" ("+NAMA+", "+NIM+", "+URL+") VALUES (?, ? , ?)";
+
+    public void insertTransaction(MahasiswaModel mahasiswaModel) {
+        String sql = "INSERT INTO " + TABLE_NAME + " (" + NAMA + ", " + NIM + ", " + URL + ") VALUES (?, ? , ?)";
         SQLiteStatement stmt = database.compileStatement(sql);
         stmt.bindString(1, mahasiswaModel.getName());
         stmt.bindString(2, mahasiswaModel.getNim());
         stmt.bindString(3, mahasiswaModel.getUrl());
         stmt.execute();
         stmt.clearBindings();
-        Log.d("sukses", "insertTransaction: "+mahasiswaModel.getNim());
+        Log.d("sukses", "insertTransaction: " + mahasiswaModel.getNim());
     }
-//    public long insertTransaction(String name, String nim, String url) {
-//        database = dataBaseHelper.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(NAMA, name);
-//        contentValues.put(NIM, nim);
-//        contentValues.put(URL, url);
-//        long id = database.insert(TABLE_NAME, null, contentValues);
-//        return id;
-//    }
+
+    public void deleteTransaction(MahasiswaModel mahasiswaModel) {
+        String sql = "Delete FROM " + TABLE_NAME + " WHERE " + _ID + "=" + NAMA + ";";
+        SQLiteStatement stmt = database.compileStatement(sql);
+        stmt.bindString(1, mahasiswaModel.getName());
+        stmt.execute();
+        stmt.clearBindings();
+        Log.d("sukses", "insertTransaction: " + mahasiswaModel.getNim());
+
+    }
+
+    public int delete(String name){
+        SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
+        String[] whereArgs ={name};
+
+        int count = db.delete(TABLE_NAME,_ID+" = ? ",whereArgs);
+        return count;
+    }
 }

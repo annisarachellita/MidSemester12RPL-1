@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.net.IDN;
+
 import static android.provider.BaseColumns._ID;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.NAMA;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.NIM;
@@ -49,4 +51,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(db);
     }
+//    public void deleteEntry(long id){
+//        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+//        sqLiteDatabase.delete(TABLE_NAME,_ID + "=" + id, null);
+//        sqLiteDatabase.execSQL("DELETE FROM " + TABLE_NAME + "WHERE " + _ID + "=" + id + ";");
+//    }
 }

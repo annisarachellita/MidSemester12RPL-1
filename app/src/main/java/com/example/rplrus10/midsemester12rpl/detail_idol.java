@@ -34,6 +34,7 @@ public class detail_idol extends AppCompatActivity {
     String deskripsi;
     String movieID;
     String gambar;
+    String name;
     MahasiswaHelper mahasiswaHelper;
 
     @Override
@@ -48,7 +49,7 @@ public class detail_idol extends AppCompatActivity {
         fav = (FloatingActionButton) findViewById(R.id.fav);
         mahasiswaHelper = new MahasiswaHelper(detail_idol.this);
         setTitle("Detail");
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         nama_group = bundle.getString("nama_group");
         deskripsi = bundle.getString("deskripsi_group");
@@ -82,7 +83,13 @@ public class detail_idol extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Tersimpan", Toast.LENGTH_SHORT).show();
                     fav.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_black_24dp));
                     flag = false;
+
                 } else if (!flag) {
+                    mahasiswaHelper.open();
+                    mahasiswaHelper.beginTransaction();
+                    int a = mahasiswaHelper.delete(name);
+                    mahasiswaHelper.endTransaction();
+                    mahasiswaHelper.close();
                     fav.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_border_black_24dp));
                     flag = true;
                 }

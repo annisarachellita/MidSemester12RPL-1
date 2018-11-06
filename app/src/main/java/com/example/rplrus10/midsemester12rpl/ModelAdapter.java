@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.rplrus10.midsemester12rpl.database.DatabaseHelper;
 import com.example.rplrus10.midsemester12rpl.database.MahasiswaModel;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
 
     @Override
     public void onBindViewHolder(final recyclerHolder holder,final int position) {
+
         final MahasiswaModel model = mahasiswaModelArrayList.get(position);
         Glide.with(context)
                 .load(model.getUrl())
@@ -75,8 +77,11 @@ public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
                 builder.setMessage("are you sure to delete this item?");
                 builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-//                        mahasiswaModelArrayList.size();
-//                        mahasiswaModelArrayList.remove(0);
+                        DatabaseHelper databaseHelper = new DatabaseHelper(context);
+                        databaseHelper.deleteEntry(model.getId());
+                        mahasiswaModelArrayList.remove(position);
+                        notifyItemRemoved(position);
+                        databaseHelper.deleteEntry(position);
                     }
                 });
                 builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
