@@ -25,6 +25,7 @@ import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.TA
 public class MahasiswaHelper {
 
     private Context context;
+
     private DatabaseHelper dataBaseHelper;
 
     private SQLiteDatabase database;
@@ -133,15 +134,15 @@ public class MahasiswaHelper {
         Log.d("sukses", "insertTransaction: " + mahasiswaModel.getNim());
     }
 
-    public void deleteTransaction(MahasiswaModel mahasiswaModel) {
-        String sql = "Delete FROM " + TABLE_NAME + " WHERE " + _ID + "=" + NAMA + ";";
-        SQLiteStatement stmt = database.compileStatement(sql);
-        stmt.bindString(1, mahasiswaModel.getName());
-        stmt.execute();
-        stmt.clearBindings();
-        Log.d("sukses", "insertTransaction: " + mahasiswaModel.getNim());
-
-    }
+//    public void deleteTransaction(MahasiswaModel mahasiswaModel) {
+//        String sql = "Delete FROM " + TABLE_NAME + " WHERE " + _ID + "=" + NAMA + ";";
+//        SQLiteStatement stmt = database.compileStatement(sql);
+//        stmt.bindString(1, mahasiswaModel.getName());
+//        stmt.execute();
+//        stmt.clearBindings();
+//        Log.d("sukses", "deleteTransaction: " + mahasiswaModel.getNim());
+//
+//    }
 
     public int delete(String name){
         SQLiteDatabase db = dataBaseHelper.getWritableDatabase();

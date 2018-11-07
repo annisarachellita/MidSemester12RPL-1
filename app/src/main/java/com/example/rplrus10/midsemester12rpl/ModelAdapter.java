@@ -77,11 +77,6 @@ public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
                 builder.setMessage("are you sure to delete this item?");
                 builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        DatabaseHelper databaseHelper = new DatabaseHelper(context);
-                        databaseHelper.deleteEntry(model.getId());
-                        mahasiswaModelArrayList.remove(position);
-                        notifyItemRemoved(position);
-                        databaseHelper.deleteEntry(position);
                     }
                 });
                 builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
