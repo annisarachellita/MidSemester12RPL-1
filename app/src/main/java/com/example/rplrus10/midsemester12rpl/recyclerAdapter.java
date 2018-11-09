@@ -1,8 +1,10 @@
 package com.example.rplrus10.midsemester12rpl;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,6 +70,31 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerHolder> {
                 sendIntent.putExtra(Intent.EXTRA_TEXT,"This is my application");
                 sendIntent.setType("text/plain");
                 context.startActivity(sendIntent);
+            }
+        });
+        holder.btnhapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        context);
+                builder.setTitle("Delete");
+                builder.setCancelable(true);
+                builder.setMessage("are you sure to delete this item?");
+                builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        idolArrayList.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position,idolArrayList.size());
+                    }
+                });
+                builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create();
+                builder.show();
             }
         });
     }

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.rplrus10.midsemester12rpl.database.DatabaseHelper;
@@ -34,7 +35,6 @@ public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
 
     @Override
     public void onBindViewHolder(final recyclerHolder holder,final int position) {
-
         final MahasiswaModel model = mahasiswaModelArrayList.get(position);
         Glide.with(context)
                 .load(model.getUrl())
@@ -85,6 +85,7 @@ public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
                         dialog.dismiss();
                     }
                 });
+                builder.create();
                 builder.show();
             }
         });

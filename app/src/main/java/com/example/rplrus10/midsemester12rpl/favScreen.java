@@ -1,6 +1,5 @@
 package com.example.rplrus10.midsemester12rpl;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
