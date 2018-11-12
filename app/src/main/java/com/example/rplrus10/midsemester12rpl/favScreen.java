@@ -16,7 +16,7 @@ public class favScreen extends AppCompatActivity {
 
     RecyclerView Rview;
     private MahasiswaHelper mahasiswaHelper;
-    public ArrayList<MahasiswaModel> models;
+    public ArrayList<MahasiswaModel> model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,8 @@ public class favScreen extends AppCompatActivity {
         Rview = (RecyclerView) findViewById(R.id.Rview);
         mahasiswaHelper = new MahasiswaHelper(this);
         mahasiswaHelper.open();
-        models = mahasiswaHelper.getAllData();
-        ModelAdapter adapter = new ModelAdapter(getApplicationContext(),models);
+        model = mahasiswaHelper.getAllData();
+        ModelAdapter adapter = new ModelAdapter(getApplicationContext(),model);
         mahasiswaHelper.close();
         Rview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         Rview.setAdapter(adapter);

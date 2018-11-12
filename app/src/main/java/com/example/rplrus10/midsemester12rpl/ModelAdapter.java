@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.rplrus10.midsemester12rpl.database.DatabaseHelper;
+import com.example.rplrus10.midsemester12rpl.database.MahasiswaHelper;
 import com.example.rplrus10.midsemester12rpl.database.MahasiswaModel;
 
 import java.util.ArrayList;
@@ -20,10 +21,12 @@ import java.util.ArrayList;
 public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
     private ArrayList<MahasiswaModel> mahasiswaModelArrayList ;
     Context context;
+    MahasiswaHelper mahasiswaHelper;
 
     public ModelAdapter(Context context, ArrayList<MahasiswaModel> mahasiswaModelArrayList){
         this.context = context;
         this.mahasiswaModelArrayList = mahasiswaModelArrayList;
+        mahasiswaHelper = new MahasiswaHelper(context);
     }
 
     @Override
@@ -70,24 +73,18 @@ public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
         holder.btnhapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        context);
-                builder.setTitle("Delete");
-                builder.setCancelable(true);
-                builder.setMessage("are you sure to delete this item?");
-                builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                final int position2 = position;
+                final String name = model.getName();
+                mahasiswaHelper.open();
+                mahasiswaHelper.beginTransaction();
+                mahasiswaHelper.delete(name);
+                mahasiswaHelper.setTransactionSuccess();
+                mahasiswaHelper.endTransaction();
+                mahasiswaHelper.close();
+                mahasiswaModelArrayList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position,mahasiswaModelArrayList.size());
                     }
-                });
-                builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.create();
-                builder.show();
-            }
         });
     }
     @Override
