@@ -73,23 +73,14 @@ public class detail_idol extends AppCompatActivity {
             public void onClick(View v) {
                 if (flag) {
                     //insert
-                    mahasiswaHelper.open();
-                    mahasiswaHelper.beginTransaction();
                     MahasiswaModel model = new MahasiswaModel(nama_group,deskripsi,gambar);
                     mahasiswaHelper.insertTransaction(model);
-                    mahasiswaHelper.setTransactionSuccess();
-                    mahasiswaHelper.endTransaction();
-                    mahasiswaHelper.close();
                     Toast.makeText(getApplicationContext(), "Tersimpan", Toast.LENGTH_SHORT).show();
                     fav.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_black_24dp));
                     flag = false;
 
                 } else if (!flag) {
-                    mahasiswaHelper.open();
-                    mahasiswaHelper.beginTransaction();
                     int a = mahasiswaHelper.delete(name);
-                    mahasiswaHelper.endTransaction();
-                    mahasiswaHelper.close();
                     fav.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_border_black_24dp));
                     flag = true;
                 }

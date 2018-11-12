@@ -24,10 +24,8 @@ public class favScreen extends AppCompatActivity {
         setContentView(R.layout.activity_fav_screen);
         Rview = (RecyclerView) findViewById(R.id.Rview);
         mahasiswaHelper = new MahasiswaHelper(this);
-        mahasiswaHelper.open();
         model = mahasiswaHelper.getAllData();
         ModelAdapter adapter = new ModelAdapter(getApplicationContext(),model);
-        mahasiswaHelper.close();
         Rview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         Rview.setAdapter(adapter);
     }

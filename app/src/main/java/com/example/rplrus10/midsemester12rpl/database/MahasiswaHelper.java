@@ -15,8 +15,14 @@ import java.util.ArrayList;
 import static android.provider.BaseColumns._ID;
 import static android.support.constraint.Constraints.TAG;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.NAMA;
+import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.NAMA;
+import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.NIM;
+import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.NIM;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.NIM;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.MahasiswaColumns.URL;
+import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.TABLE_NAME;
+import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.TABLE_NAME;
+import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.TABLE_NAME;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.TABLE_NAME;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.TABLE_NAME;
 import static com.example.rplrus10.midsemester12rpl.database.DatabaseContract.TABLE_NAME;
@@ -42,7 +48,7 @@ public class MahasiswaHelper {
     private SQLiteDatabase database;
 
     public MahasiswaHelper(Context context) {
-        this.context = context;
+        dataBaseHelper = new DatabaseHelper(context);
     }
 
     public MahasiswaHelper open() throws SQLException {
@@ -91,8 +97,7 @@ public class MahasiswaHelper {
      * @return hasil query mahasiswa model di dalam arraylist
      */
     public ArrayList<MahasiswaModel> getAllData() {
-
-        database.beginTransaction();
+        database = dataBaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         cursor.moveToFirst();
         ArrayList<MahasiswaModel> arrayList = new ArrayList<>();
@@ -135,6 +140,7 @@ public class MahasiswaHelper {
     }
 
     public void insertTransaction(MahasiswaModel mahasiswaModel) {
+        database = dataBaseHelper.getWritableDatabase();
         String sql = "INSERT INTO " + TABLE_NAME + " (" + NAMA + ", " + NIM + ", " + URL + ") VALUES (?, ? , ?)";
         SQLiteStatement stmt = database.compileStatement(sql);
         stmt.bindString(1, mahasiswaModel.getName());
@@ -156,10 +162,11 @@ public class MahasiswaHelper {
 //    }
 
     public int delete(String uname) {
-        SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
+        database = dataBaseHelper.getWritableDatabase();
+
         String[] whereArgs = {uname};
 
-        int count = db.delete(TABLE_NAME, _ID + " = ?", whereArgs);
+        int count = database.delete(TABLE_NAME, _ID + " = ?", whereArgs);
         return count;
     }
 /*

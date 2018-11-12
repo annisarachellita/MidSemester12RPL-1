@@ -73,18 +73,12 @@ public class ModelAdapter extends RecyclerView.Adapter<recyclerHolder> {
         holder.btnhapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final int position2 = position;
-                final String name = model.getName();
-                mahasiswaHelper.open();
-                mahasiswaHelper.beginTransaction();
-                mahasiswaHelper.delete(name);
-                mahasiswaHelper.setTransactionSuccess();
-                mahasiswaHelper.endTransaction();
-                mahasiswaHelper.close();
+                final String id = model.getId();
+                mahasiswaHelper.delete(id);
                 mahasiswaModelArrayList.remove(position);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position,mahasiswaModelArrayList.size());
-                    }
+            }
         });
     }
     @Override
