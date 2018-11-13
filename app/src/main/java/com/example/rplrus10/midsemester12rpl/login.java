@@ -53,23 +53,23 @@ public class login extends AppCompatActivity {
             }
         });
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        SharedPreferences sp = getSharedPreferences("Login",
-                MODE_PRIVATE);
-        boolean stateValue  = sp.getBoolean("setLoggingOut", false);
-        if (requestCode == MAIN_ACTIVITY_REQUEST_CODE) {
-            if (!stateValue) {
-                finish();
-            } else {
-                updateLoginState(false);
-                super.onActivityResult(requestCode, resultCode, data);
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
-    private void updateLoginState(boolean b) {
-    }
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        SharedPreferences sp = getSharedPreferences("Login",
+//                MODE_PRIVATE);
+//        boolean stateValue  = sp.getBoolean("setLoggingOut", false);
+//        if (requestCode == MAIN_ACTIVITY_REQUEST_CODE) {
+//            if (!stateValue) {
+//                finish();
+//            } else {
+//                updateLoginState(false);
+//                super.onActivityResult(requestCode, resultCode, data);
+//            }
+//        } else {
+//            super.onActivityResult(requestCode, resultCode, data);
+//        }
+//    }
+//
+//    private void updateLoginState(boolean b) {
+//    }
 
 }

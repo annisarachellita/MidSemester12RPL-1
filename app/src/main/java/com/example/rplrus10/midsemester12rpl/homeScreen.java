@@ -94,18 +94,17 @@ public class homeScreen extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu:
-                moveTaskToBack(true);
-                SharedPreferences myPrefs = getSharedPreferences("Login",
-                        MODE_PRIVATE);
+                SharedPreferences myPrefs = getSharedPreferences("Login",MODE_PRIVATE);
                 SharedPreferences.Editor editor = myPrefs.edit();
                 editor.clear();
                 editor.apply();
                 Intent intent = new Intent(homeScreen.this, homeScreen.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 finish();
             case R.id.menu1:
-                Intent intent1 = new Intent(this,favScreen.class);
+                Intent intent1 = new Intent(homeScreen.this,favScreen.class);
                 startActivity(intent1);
+                finish();
             default:
                 return super.onOptionsItemSelected(item);
         }

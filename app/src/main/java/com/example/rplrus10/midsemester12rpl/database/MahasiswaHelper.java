@@ -163,7 +163,6 @@ public class MahasiswaHelper {
 
     public int delete(String uname) {
         database = dataBaseHelper.getWritableDatabase();
-
         String[] whereArgs = {uname};
 
         int count = database.delete(TABLE_NAME, _ID + " = ?", whereArgs);
