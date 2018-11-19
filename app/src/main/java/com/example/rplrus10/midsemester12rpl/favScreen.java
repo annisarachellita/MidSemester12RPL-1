@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.bumptech.glide.module.LibraryGlideModule;
@@ -22,6 +23,8 @@ public class favScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fav_screen);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
         Rview = (RecyclerView) findViewById(R.id.Rview);
         mahasiswaHelper = new MahasiswaHelper(this);
         model = mahasiswaHelper.getAllData();

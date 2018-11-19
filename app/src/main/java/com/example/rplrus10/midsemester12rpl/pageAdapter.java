@@ -5,11 +5,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class pageAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+    int Tabs;
 
     public pageAdapter(FragmentManager fm,int NumOfTabs) {
         super(fm);
-        this.mNumOfTabs = NumOfTabs;
+        this.Tabs = NumOfTabs;
     }
 
     @Override
@@ -28,6 +28,6 @@ public class pageAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return mNumOfTabs;
+        return Tabs;
     }
 }

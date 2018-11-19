@@ -25,16 +25,12 @@ public class recyclerAdapterRetro extends RecyclerView.Adapter<recyclerHolder> {
         this.context = context;
         this.idolArrayList = idolArrayList;
     }
-
-
-
     public recyclerHolder onCreateViewHolder( ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item,parent,false);
         recyclerHolder rcv = new recyclerHolder(layoutView);
         return rcv;
     }
-
     @Override
     public void onBindViewHolder(final recyclerHolder holder,final int position) {
         final Results idol = idolArrayList.get(position);
@@ -93,7 +89,6 @@ public class recyclerAdapterRetro extends RecyclerView.Adapter<recyclerHolder> {
             }
         });
     }
-
     @Override
     public int getItemCount() {
         Log.d(TAG, "getItemCount: "+idolArrayList.size());

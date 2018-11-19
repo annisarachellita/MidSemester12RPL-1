@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,6 +42,9 @@ public class detail_idol extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_idol);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         iv_idol = (ImageView) findViewById(R.id.iv_img_idol);
         tv_name_idol = (TextView) findViewById(R.id.tv_nama_idol);
@@ -86,5 +90,11 @@ public class detail_idol extends AppCompatActivity {
                 }
             }
         });
+    }
+    public boolean onSupportNavigateUp() {
+        Intent intent = new Intent(this,homeScreen.class);
+        startActivity(intent);
+        finish();
+        return true;
     }
 }
