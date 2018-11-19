@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rplrus10.midsemester12rpl">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -23,7 +24,7 @@
         </activity>
         <activity android:name=".homeScreen" />
         <activity android:name=".detail_idol" />
-        <activity android:name=".favScreen"></activity>
+        <activity android:name=".favScreen" />
     </application>
 
 </manifest>

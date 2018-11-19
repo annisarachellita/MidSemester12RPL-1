@@ -3,16 +3,12 @@ package com.example.rplrus10.midsemester12rpl;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -20,12 +16,12 @@ import java.util.ArrayList;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class recyclerAdapter extends RecyclerView.Adapter<recyclerHolder> {
+public class recyclerAdapterRetro extends RecyclerView.Adapter<recyclerHolder> {
 
-    private ArrayList<idol> idolArrayList ;
+    private ArrayList<Results> idolArrayList ;
     Context context;
 
-    public recyclerAdapter(Context context, ArrayList<idol> idolArrayList){
+    public recyclerAdapterRetro(Context context, ArrayList<Results> idolArrayList){
         this.context = context;
         this.idolArrayList = idolArrayList;
     }
@@ -41,25 +37,23 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerHolder> {
 
     @Override
     public void onBindViewHolder(final recyclerHolder holder,final int position) {
-        final idol idol = idolArrayList.get(position);
+        final Results idol = idolArrayList.get(position);
         Glide.with(context)
-                .load(idol.getGambar())
+                .load(only_url.url+idol.getPosterPath())
                 .into(holder.imgholder);
-        holder.person_name.setText(idolArrayList.get(position).getNama_group());
+        holder.person_name.setText(idolArrayList.get(position).getTitle());
         holder.btndetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String nama_group = idolArrayList.get(position).getNama_group();
-                final String deskripsi_group = idolArrayList.get(position).getDeskripsi_group();
-                final String gambar = idolArrayList.get(position).getGambar();
-                final String tanggal = idolArrayList.get(position).getTanggal();
-                final String id = idolArrayList.get(position).getId();
+                final String nama_group = idolArrayList.get(position).getTitle();
+                final String deskripsi_group = idolArrayList.get(position).getOverview();
+                final String gambar = only_url.url+idolArrayList.get(position).getPosterPath();
+               // final String id = idolArrayList.get(position).getId();
                 Intent i = new Intent(context.getApplicationContext(),detail_idol.class);
                 i.putExtra("nama_group",nama_group);
                 i.putExtra("deskripsi_group",deskripsi_group);
                 i.putExtra("gambar",gambar);
-                i.putExtra("tanggal",tanggal);
-                i.putExtra("id",id);
+                //i.putExtra("id",id);
                 context.startActivity(i);
             }
         });

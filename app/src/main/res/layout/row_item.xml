@@ -40,11 +40,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="45dp">
+            android:layout_marginTop="35dp">
 
             <Button
                 android:id="@+id/btndetail"
-                android:layout_width="80dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="100dp"
                 android:text="Detail"
@@ -54,24 +54,24 @@
 
             <Button
                 android:id="@+id/btnshare"
-                android:layout_width="80dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:text="Share"
                 android:textColor="#fffdfd"
                 android:background="#f9cc1313"
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="20dp"/>
+            <Button
+                android:id="@+id/btnhapus"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="delete"
+                android:textColor="#fffdfd"
+                android:background="#f9cc1313"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                />
         </LinearLayout>
-        <Button
-            android:id="@+id/btnhapus"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="260dp"
-            android:text="delete"
-            android:textColor="#000"
-            android:background="@android:color/transparent"
-            />
-
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
